@@ -14,9 +14,11 @@
 -- Ex
 
 use sql_invoicing;
-SELECT *
+SELECT p.payment_id,p.date,c.name,i.invoice_total,pm.name as payment_method
 FROM payments p 
 join clients c  
 on p.client_id = c.client_id
 join payment_methods pm
 on p.payment_method = pm.payment_method_id
+Join invoices i 
+on p.client_id = i.client_id
